@@ -31,7 +31,7 @@ Hacker News Tab doesn't require any setup. Here are the steps to install the ext
 That's it! 
 
 ## Contribution
-I'd love to hear your questions or suggestions! Reach out to me at sharonl@mit.edu or on Twitter [@sharont](https://twitter.com/sharontlin).
+I'd love to hear your questions or suggestions! Reach out to me at sharonl@mit.edu or on Twitter [@sharontlin](https://twitter.com/sharontlin).
 
 ## License
 MIT © [Sharon Lin](https://sharonlin.me)
