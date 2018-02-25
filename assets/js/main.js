@@ -25,7 +25,7 @@ function HubTab() {
         refreshDuration = '180',
 
         // The time for last hunt
-        huntTImeKey = 'last_hunt_time';
+        huntTimeKey = 'last_hunt_time';
 
     var filterStorage = new HubStorage();
 
@@ -162,7 +162,7 @@ function HubTab() {
 
         // Save the hunt results to storage.
         filterStorage.getStorage().setItem(huntResultKey, huntResults);
-        filterStorage.getStorage().setItem(huntTImeKey, moment().format('YYYY-MM-DD HH:mm:ss'));
+        filterStorage.getStorage().setItem(huntTimeKey, moment().format('YYYY-MM-DD HH:mm:ss'));
     };
 
 
@@ -179,7 +179,7 @@ function HubTab() {
 
         // ..we do not have any hunt results
         var lastHuntResult = filterStorage.getStorage().getItem(huntResultKey),
-            lastHuntTime = filterStorage.getStorage().getItem(huntTImeKey);
+            lastHuntTime = filterStorage.getStorage().getItem(huntTimeKey);
         if (!lastHuntResult || !lastHuntTime || $.trim(lastHuntResult) === 'undefined') {
             return true;
         }
