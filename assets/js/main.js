@@ -75,13 +75,16 @@ function HubTab() {
               <div class="footer">
                 <span class="footer-stat">
                   <i class="fa fa-caret-square-o-up"></i>
-                  ${story.points} points</span>
-                <i class="fa fa-clock-o"></i>
-                ${story.created_at.substring(0, 10)}
+                  ${story.points} points
+                </span>
+                <span class="footer-stat">
+                  <i class="fa fa-clock-o"></i>
+                  ${story.created_at.substring(0, 10)}
                 </span>
                 <span class="footer-stat">
                   <i class="fa fa-comments-o"></i>
-                  ${story.num_comments} comments</span>
+                  ${story.num_comments} comments
+                </span>
               </div>
             </div>`;
           }
