@@ -81,7 +81,8 @@ a {
 }
 
 div.container {
-    width: 950px;
+    max-width: 950px;
+    width: 90%;
     margin: auto;
 }
 

@@ -67,32 +67,30 @@ function HubTab() {
                 repFullDesc = '<i>No description or website provided</i>';
             }
 
-            html += '<div class="content-item">' +
-                '<div class="header"><a href="' + story.url + '">' + repFullName + '</a></div>' +
-                '<p class="tagline">('+
-                repFullDesc +
-                ')</p>' +
-                '<div class="footer">' +
-                '<span class="footer-stat">' +
-                '<i class="fa fa-caret-square-o-up"></i>' +
-                story.points +
-                ' points</span>' +
-                '<span class="footer-stat">' +
-                '<i class="fa fa-clock-o"></i>' +
-                story.created_at.substring(0,10) +
-                '</span>' +
-                '<span class="footer-stat">' +
-                '<i class="fa fa-comments-o"></i>' +
-                story.num_comments +
-                ' comments</span>' +
-                '</div>' +
-                '</div>';
-              }
+            html += `<div class="content-item">
+              <div class="header">
+                <a href="${story.url}">${repFullName}</a>
+              </div>
+              <p class="tagline">(${repFullDesc})</p>
+              <div class="footer">
+                <span class="footer-stat">
+                  <i class="fa fa-caret-square-o-up"></i>
+                  ${story.points} points</span>
+                <i class="fa fa-clock-o"></i>
+                ${story.created_at.substring(0, 10)}
+                </span>
+                <span class="footer-stat">
+                  <i class="fa fa-comments-o"></i>
+                  ${story.num_comments} comments</span>
+              </div>
+            </div>`;
+          }
         });
 
-
-
-        var finalHtml = '<div class="content-batch" id="content-batch">' + html + '<div class="clearfix"></div></div></div>';
+        var finalHtml = `<div class="content-batch" id="content-batch">
+          ${html}
+          <div class="clearfix"></div>
+        </div>`;
 
         return finalHtml;
     }
@@ -264,7 +262,7 @@ function HubTab() {
         // Bind the scroll to fetch repositories when bottom reached
         $(window).on('scroll', function () {
             if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-                continue;
+                return;
             }
         });
 
