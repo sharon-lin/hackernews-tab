@@ -25,7 +25,7 @@ function HubTab() {
         refreshDuration = '180',
 
         // The time for last hunt
-        huntTImeKey = 'last_hunt_time';
+        huntTimeKey = 'last_hunt_time';
 
     var filterStorage = new HubStorage();
 
@@ -67,32 +67,33 @@ function HubTab() {
                 repFullDesc = '<i>No description or website provided</i>';
             }
 
-            html += '<div class="content-item">' +
-                '<div class="header"><a href="' + story.url + '">' + repFullName + '</a></div>' +
-                '<p class="tagline">('+
-                repFullDesc +
-                ')</p>' +
-                '<div class="footer">' +
-                '<span class="footer-stat">' +
-                '<i class="fa fa-caret-square-o-up"></i>' +
-                story.points +
-                ' points</span>' +
-                '<span class="footer-stat">' +
-                '<i class="fa fa-clock-o"></i>' +
-                story.created_at.substring(0,10) +
-                '</span>' +
-                '<span class="footer-stat">' +
-                '<i class="fa fa-comments-o"></i>' +
-                story.num_comments +
-                ' comments</span>' +
-                '</div>' +
-                '</div>';
-              }
+            html += `<div class="content-item">
+              <div class="header">
+                <a href="${story.url}">${repFullName}</a>
+              </div>
+              <p class="tagline">(${repFullDesc})</p>
+              <div class="footer">
+                <span class="footer-stat">
+                  <i class="fa fa-caret-square-o-up"></i>
+                  ${story.points} points
+                </span>
+                <span class="footer-stat">
+                  <i class="fa fa-clock-o"></i>
+                  ${story.created_at.substring(0, 10)}
+                </span>
+                <span class="footer-stat">
+                  <i class="fa fa-comments-o"></i>
+                  ${story.num_comments} comments
+                </span>
+              </div>
+            </div>`;
+          }
         });
 
-
-
-        var finalHtml = '<div class="content-batch" id="content-batch">' + html + '<div class="clearfix"></div></div></div>';
+        var finalHtml = `<div class="content-batch" id="content-batch">
+          ${html}
+          <div class="clearfix"></div>
+        </div>`;
 
         return finalHtml;
     }
@@ -161,7 +162,7 @@ function HubTab() {
 
         // Save the hunt results to storage.
         filterStorage.getStorage().setItem(huntResultKey, huntResults);
-        filterStorage.getStorage().setItem(huntTImeKey, moment().format('YYYY-MM-DD HH:mm:ss'));
+        filterStorage.getStorage().setItem(huntTimeKey, moment().format('YYYY-MM-DD HH:mm:ss'));
     };
 
 
@@ -178,7 +179,7 @@ function HubTab() {
 
         // ..we do not have any hunt results
         var lastHuntResult = filterStorage.getStorage().getItem(huntResultKey),
-            lastHuntTime = filterStorage.getStorage().getItem(huntTImeKey);
+            lastHuntTime = filterStorage.getStorage().getItem(huntTimeKey);
         if (!lastHuntResult || !lastHuntTime || $.trim(lastHuntResult) === 'undefined') {
             return true;
         }
@@ -264,7 +265,7 @@ function HubTab() {
         // Bind the scroll to fetch repositories when bottom reached
         $(window).on('scroll', function () {
             if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-                continue;
+                return;
             }
         });
 
